@@ -6,8 +6,26 @@ public class StarTree {
     public static void main(String[] args) {
 
         String completed_tree = "incomplete";
+        Integer number_of_levels = 3;
 
-        completed_tree = build_tree(3);
+        if (args.length > 0) {
+
+            // Exception handling while parsing CLI arguments, courtesy of:
+            // https://docs.oracle.com/javase/tutorial/
+            //                    essential/environment/cmdLineArgs.html
+            try {
+
+               number_of_levels = Integer.parseInt(args[0]);
+
+            } catch (NumberFormatException e) {
+
+                System.err.println("The first supplied argument must be an integer.");
+                System.exit(1);
+
+            }
+        }
+
+        completed_tree = build_tree(number_of_levels);
         System.out.println(completed_tree);
 
     }
